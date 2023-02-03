@@ -24,6 +24,7 @@
 
     <script>
       var socket = io();
+      var username = window.prompt("Digite seu nome:");
 
       var messages = document.getElementById('messages');
       var form = document.getElementById('form');
@@ -32,7 +33,7 @@
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         if (input.value) {
-          socket.emit('chat message', input.value);
+          socket.emit('chat message', `(${username}): ${input.value}`);
           input.value = '';
         }
       });
